@@ -53,8 +53,8 @@ const profileDescriptionInput = document.querySelector(
 const profileEditForm = profileEditModal.querySelector("#modal-form");
 const cardTemplate = document
   .querySelector("#card-template")
-  .querySelector(".card");
-const cardListEl = document.querySelector(".card__list");
+  .content.querySelector(".card");
+const cardListEl = document.querySelector(".cards__list");
 
 /* Functions */
 
@@ -70,6 +70,7 @@ function getCardElement(cardData) {
   const cardElement = cardTemplate.cloneNode(true);
   const cardImageEl = cardElement.querySelector(".card__image");
   const cardTitleEl = cardElement.querySelector(".card__title");
+  cardImageEl.src = cardData.link;
   cardTitleEl.textContent = cardData.name;
   return cardElement;
 }
@@ -98,5 +99,5 @@ profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 
 initialCards.forEach((cardData) => {
   const cardElement = getCardElement(cardData);
-  cardListEl.prepend(cardElement);
+  cardListEl.append(cardElement);
 });
