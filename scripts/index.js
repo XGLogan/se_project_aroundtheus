@@ -51,7 +51,9 @@ const profileDescriptionInput = document.querySelector(
 );
 
 const profileEditForm = profileEditModal.querySelector("#modal-form");
-const cardTemplate = document.querySelector("#card-template");
+const cardTemplate = document
+  .querySelector("#card-template")
+  .querySelector(".card");
 const cardListEl = document.querySelector(".card__list");
 
 /* Functions */
