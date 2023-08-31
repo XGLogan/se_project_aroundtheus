@@ -39,6 +39,7 @@ const initialCards = [
 
 console.log(initialCards);
 
+/* Elements */
 const profileEditButton = document.querySelector("#profile-edit-button");
 const profileEditModal = document.querySelector("#profile-edit-modal");
 const profileModalCloseButton = document.querySelector("#profile-modal-close");
@@ -46,23 +47,54 @@ const profileName = document.querySelector("#profile-name");
 const profileDescription = document.querySelector("#profile-description");
 const profileNameInput = document.querySelector("#profile-name-input");
 const profileDescriptionInput = document.querySelector(
-  "#profile-decription-input"
+  "#profile-description-input"
 );
 
-const profileEditForm = profileEditModal.querySelector("modal__form");
+const profileEditForm = profileEditModal.querySelector("#modal-form");
+const cardTemplate = document.querySelector("#card-template");
+const cardListEl = document.querySelector(".card__list");
 
-profileEditButton.addEventListener("click", () => {
-  profileNameInput.value = profileName.textContent;
-  profileDescriptionInput.value = profileDescription.textContent;
-  profileEditModal.classList.add("modal");
-});
+/* Functions */
 
-profileModalCloseButton.addEventListener("click", () => {
-  profileEditModal.classList.remove("modal");
-});
+function closePopup() {
+  profileEditModal.classList.add("modal_opened");
+}
 
-profileEditForm.addEventListener("submit", (e) => {
+function openPopup() {
+  profileEditModal.classList.remove("modal_opened");
+}
+
+function getCardElement(cardData) {
+  const cardElement = cardTemplate.cloneNode(true);
+  const cardImageEl = cardElement.querySelector(".card__image");
+  const cardTitleEl = cardElement.querySelector(".card__title");
+  cardTitleEl.textContent = cardData.name;
+  return cardElement;
+}
+/*  Event Handelers */
+
+function handleProfileEditSubmit(e) {
   e.preventDefault();
   profileName.textContent = profileNameInput.value;
   profileDescription.textContent = profileDescriptionInput.value;
+  closePopup();
+}
+
+/** Event Listeners */
+
+profileEditButton.addEventListener("click", () => {
+  profileNameInput.value = profileName.textContent;
+  profileDescriptionInput.value = profileDescription.textContent.trim();
+  profileEditModal.classList.add("modal");
+});
+
+profileModalCloseButton.addEventListener("click", closePopup);
+
+profileEditButton.addEventListener("click", openPopup);
+
+profileEditForm.addEventListener("submit", handleProfileEditSubmit);
+
+initialCards.forEach((cardData) => {
+  const cardElement = getCardElement(cardData);
+  cardListEl.prepend(cardElement);
 });
