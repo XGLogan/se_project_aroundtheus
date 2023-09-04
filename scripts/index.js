@@ -59,11 +59,11 @@ const cardListEl = document.querySelector(".cards__list");
 /* Functions */
 
 function closePopup() {
-  profileEditModal.classList.add("modal_opened");
+  profileEditModal.classList.add("modal_closed");
 }
 
 function openPopup() {
-  profileEditModal.classList.remove("modal_opened");
+  profileEditModal.classList.remove("modal_closed");
 }
 
 function getCardElement(cardData) {
@@ -88,7 +88,7 @@ function handleProfileEditSubmit(e) {
 profileEditButton.addEventListener("click", () => {
   profileNameInput.value = profileName.textContent;
   profileDescriptionInput.value = profileDescription.textContent.trim();
-  profileEditModal.classList.add("modal_opened");
+  profileEditModal.classList.add("modal_closed");
 });
 
 profileModalCloseButton.addEventListener("click", closePopup);
