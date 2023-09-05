@@ -25,6 +25,8 @@
   line-height: 48px;
   font-weight: 500px;
   grid-area: "title";
+  padding-bottom: 0;
+  margin-bottom: 12px;
 }
 
 .profile__discription {
@@ -40,7 +42,10 @@
   height: 24px;
   width: 24px;
   grid-area: "button";
-  margin: 0;
+  margin-left: 18px;
+  margin-top: 18px;
+  padding: 0px;
+  border: none;
 }
 
 .profile__add-button {
