@@ -53,3 +53,22 @@
   height: 18px;
   border: 0;
 }
+
+@media screen and (max-width: 400px) {
+  .card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .card__description {
+    width: 247px;
+    height: 72px;
+    flex-shrink: 0;
+  }
+  .card__image {
+    width: 282px;
+    height: 282px;
+    flex-shrink: 0;
+  }
+}
