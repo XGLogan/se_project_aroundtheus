@@ -78,4 +78,18 @@
     margin: 0;
     background-repeat: space;
   }
+  .profile__title {
+    color: #fff;
+    text-align: center;
+    font-family: Inter;
+
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+  .profile__image {
+    width: 168.75px;
+    height: 168.5px;
+    flex-shrink: 0;
+  }
 }
