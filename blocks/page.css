@@ -32,11 +32,17 @@
 }
 
 @media screen and (max-width: 400px) {
+  .page__content {
+    width: 320px;
+    display: flex;
+    align-items: flex-end;
+  }
   .page__section {
     width: 100%;
   }
   .page {
     display: flex;
     align-items: center;
+    justify-content: center;
   }
 }

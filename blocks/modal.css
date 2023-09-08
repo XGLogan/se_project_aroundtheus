@@ -22,7 +22,7 @@
   padding: 36px;
   background-color: #fff;
   border-radius: 10px;
-  min-width: 282px;
+
   /*width: 430px;
   height: 330px; */
 }
@@ -43,7 +43,6 @@
   width: 330px;
   height: 23px;
   color: #000;
-  font-family: Inter;
   font-size: 18px;
   font-style: normal;
   font-weight: 900;
@@ -88,6 +87,8 @@
     width: 282px;
     height: 322px;
     flex-shrink: 0;
+    padding-bottom: 0;
+    padding-right: 0;
   }
   .modal__form {
     width: 238px;
