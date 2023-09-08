@@ -110,9 +110,10 @@
   }
   .modal__close-button {
     top: -68px;
-    right: -27px;
+    right: 4px;
     width: 26px;
     height: 26px;
     flex-shrink: 0;
+    margin-right: 19px;
   }
 }
