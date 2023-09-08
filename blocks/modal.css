@@ -56,6 +56,7 @@
   width: 430px;
   height: 33px;
   gap: 30px;
+  background: transparent url(../images/Add\ Button.svg) no-repeat;
   border: none;
   color: #000;
 }
@@ -90,6 +91,7 @@
     flex-shrink: 0;
     padding-bottom: 0;
     padding-right: 0;
+    padding-top: 25px;
   }
   .modal__form {
     width: 238px;

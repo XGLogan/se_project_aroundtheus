@@ -87,6 +87,8 @@
   .profile__add-button {
     margin: 0;
     background-repeat: space;
+    background: transparent url(../images/Add\ Button.svg) no-repeat;
+    width: 282px;
   }
   .profile__title {
     width: 196px;
