@@ -82,6 +82,7 @@
 
 @media screen and (max-width: 400px) {
   .modal {
+    padding: 0;
   }
   .modal__container {
     width: 282px;
@@ -100,6 +101,7 @@
     width: 238px;
     height: 46px;
     flex-shrink: 0;
+    margin: 0;
   }
   .modal__input {
     width: 238px;
@@ -109,6 +111,8 @@
   .modal__close-button {
     top: -68px;
     right: -27px;
-    margin-right: 19px;
+    width: 26px;
+    height: 26px;
+    flex-shrink: 0;
   }
 }
