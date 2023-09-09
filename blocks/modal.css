@@ -56,7 +56,6 @@
   width: 430px;
   height: 33px;
   gap: 30px;
-  background: transparent url(../images/Add\ Button.svg) no-repeat;
   border: none;
   color: #000;
 }
@@ -86,12 +85,13 @@
     padding: 0;
   }
   .modal__container {
-    width: 282px;
-    height: 322px;
+    width: 260px;
+    height: 300px;
     flex-shrink: 0;
     padding-bottom: 0;
     padding-right: 0;
     padding-top: 25px;
+    padding-left: 22px;
   }
   .modal__form {
     width: 238px;
