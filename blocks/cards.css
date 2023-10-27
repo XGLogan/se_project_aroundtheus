@@ -22,6 +22,7 @@
   height: 282px;
   width: 282px;
   border-radius: 10px;
+  z-index: 0;
 }
 
 .card__title {
@@ -54,6 +55,22 @@
   width: 21px;
   height: 18px;
   border: 0;
+}
+.card__like-button:hover {
+  opacity: 0.5;
+}
+
+.card__like-button_active {
+  background-image: url("../images/like-button-filled.svg");
+}
+.card__trash-button {
+  background-image: transparent url(../images/Trash.svg) center no-repeat;
+  z-index: 1;
+  width: 20.76px;
+  height: 18.13px;
+  margin-top: 18px;
+  margin-left: 249px;
+  position: absolute;
 }
 
 @media screen and (max-width: 400px) {
