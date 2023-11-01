@@ -52,7 +52,7 @@
       <div class="modal__container">
         <button class="modal__close-button" id="profile-modal-close"></button>
         <h4 class="modal__heading">Edit Profile</h4>
-        <form class="modal__form" id="modal-form">
+        <form class="modal__form" id="profile-edit-form">
           <input
             type="text"
             name="title"
@@ -90,12 +90,21 @@
             name="url"
             class="modal__input modal__input_url"
             placeholder="Image URL"
-            id="add-caard-description-input"
+            id="add-card-image-input"
           />
           <button class="modal__button" type="submit">Save</button>
         </form>
       </div>
     </div>
+
+    <!-- Full Image Modal -->
+    <div class="modal" id="full-image-modal">
+      <div class="modal__preview_image">
+        <button class="modal__close-button" id="close-modal-button"></button>
+        <img class="full_image" id="full-image" alt="Full Image" />
+      </div>
+    </div>
+
     <template id="card-template">
       <li class="card">
         <img

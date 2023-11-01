@@ -58,19 +58,29 @@
 }
 .card__like-button:hover {
   opacity: 0.5;
+  cursor: pointer;
 }
 
 .card__like-button_active {
   background-image: url("../images/like-button-filled.svg");
 }
 .card__trash-button {
-  background-image: transparent url(../images/Trash.svg) center no-repeat;
+  background: url(../images/Trash.svg) center no-repeat;
   z-index: 1;
-  width: 20.76px;
-  height: 18.13px;
+  width: 21px;
+  height: 19px;
   margin-top: 18px;
   margin-left: 249px;
   position: absolute;
+  border: none;
+}
+
+.card__trash-button:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
+.card__image:hover {
+  cursor: pointer;
 }
 
 @media screen and (max-width: 400px) {
@@ -91,5 +101,13 @@
     width: 282px;
     height: 282px;
     flex-shrink: 0;
+  }
+  .card__trash-button {
+    width: 21px;
+    height: 19px;
+    margin-bottom: 269px;
+    margin-left: 249px;
+    margin-top: 0;
+    margin-right: 18px;
   }
 }

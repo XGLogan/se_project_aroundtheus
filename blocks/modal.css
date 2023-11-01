@@ -38,9 +38,11 @@
   background-repeat: no-repeat;
   background-size: contain;
   cursor: pointer;
+  z-index: 5;
 }
 .modal__close-button:hover {
   opacity: 0.5;
+  cursor: pointer;
 }
 .modal__heading {
   width: 330px;
@@ -85,8 +87,17 @@
 
 .modal__button:hover {
   opacity: 0.5;
+  cursor: pointer;
 }
-
+.modal__preview_image {
+  margin: auto;
+  position: relative;
+  padding: 36px;
+}
+.full_image {
+  max-width: 75vw;
+  max-height: 75vh;
+}
 @media screen and (max-width: 400px) {
   .modal {
     padding: 0;
@@ -101,6 +112,8 @@
     padding-left: 22px;
   }
   .modal__form {
+    max-width: 75vh;
+    max-height: 75vh;
     width: 238px;
     height: 27px;
     flex-shrink: 0;
