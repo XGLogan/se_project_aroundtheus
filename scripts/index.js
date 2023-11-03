@@ -37,8 +37,6 @@ const initialCards = [
   cardData6,
 ];
 
-console.log(initialCards);
-
 /* Elements */
 const profileEditButton = document.querySelector("#profile-edit-button");
 const profileEditModal = document.querySelector("#profile-edit-modal");
@@ -87,12 +85,15 @@ function getCardElement(cardData) {
   const likeButton = cardElement.querySelector(".card__like-button");
   //find delete button
   const deleteCardButton = cardElement.querySelector(".card__trash-button");
-
+  const previewImageModal = document.querySelector("#full-image-modal");
+  const closePreviewModalButton = document.querySelector("close-modal-button");
+  const fullImage = document.querySelector("#full-image");
   //add event listener to the delete button
   deleteCardButton.addEventListener("click", () => {
     cardElement.remove();
   });
   //cardElement.remove()
+  cardImageEl.addEventListener("click", () => openModal(previewImageModal));
 
   //add click listener to the cardImageEl
 
@@ -134,7 +135,6 @@ function handleAddCardSubmit(e) {
 profileEditButton.addEventListener("click", () => {
   profileNameInput.value = profileName.textContent;
   profileDescriptionInput.value = profileDescription.textContent.trim();
-  profileEditModal.classList.add("modal_opened");
 });
 
 profileModalCloseButton.addEventListener("click", () =>
@@ -153,22 +153,3 @@ initialCards.forEach((cardData) => renderCard(cardData, cardListEl));
 
 const likeButtons = document.querySelectorAll(".card__like-button");
 likeButtons.forEach((likeButton) => {});
-
-// Full Image Modal:
-
-const cardImages = document.querySelectorAll(".card__image");
-const fullImageModal = document.querySelector("#full-image-modal");
-const fullImage = document.querySelector("#full-image");
-const closeModalButton = document.querySelector("#close-modal-button");
-
-cardImages.forEach((cardImage) => {
-  cardImage.addEventListener("click", () => {
-    const imageUrl = cardImage.getAttribute("src");
-    fullImage.setAttribute("src", imageUrl);
-    fullImageModal.classList.add("modal_opened");
-  });
-});
-
-closeModalButton.addEventListener("click", () => {
-  fullImageModal.classList.remove("modal_opened");
-});
