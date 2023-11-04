@@ -93,6 +93,7 @@ function getCardElement(cardData) {
   cardImageEl.addEventListener("click", () => {
     const fullImage = previewImageModal.querySelector("#full-image");
     fullImage.src = cardData.link;
+    fullImage.alt = cardData.name;
     fullImageTitle.textContent = cardData.name;
     openModal(previewImageModal);
   });
@@ -140,12 +141,13 @@ function handleAddCardSubmit(e) {
 profileEditButton.addEventListener("click", () => {
   profileNameInput.value = profileName.textContent;
   profileDescriptionInput.value = profileDescription.textContent.trim();
+  openModal(profileEditModal);
 });
 
 profileModalCloseButton.addEventListener("click", () =>
   closePopup(profileEditModal)
 );
-profileEditButton.addEventListener("click", () => openModal(profileEditModal));
+
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 addCardFormElement.addEventListener("submit", handleAddCardSubmit);
 
@@ -156,6 +158,3 @@ addCardModalCloseButton.addEventListener("click", () =>
 );
 
 initialCards.forEach((cardData) => renderCard(cardData, cardListEl));
-
-const likeButtons = document.querySelectorAll(".card__like-button");
-likeButtons.forEach((likeButton) => {});

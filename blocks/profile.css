@@ -45,8 +45,7 @@
   margin-left: 18px;
   margin-top: 18px;
   padding: 0px;
-  border-radius: 2px;
-  border: 2px solid #fff;
+  border: 1px solid #fff;
 }
 .profile__edit-button:hover {
   opacity: 0.5;
