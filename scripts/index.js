@@ -86,13 +86,14 @@ function getCardElement(cardData) {
   const deleteCardButton = cardElement.querySelector(".card__trash-button");
   const previewImageModal = document.querySelector("#full-image-modal");
   const closePreviewModalButton = document.querySelector("#close-modal-button");
+  const fullImageTitle = document.querySelector("#full-image-title");
   deleteCardButton.addEventListener("click", () => {
     cardElement.remove();
   });
   cardImageEl.addEventListener("click", () => {
     const fullImage = previewImageModal.querySelector("#full-image");
     fullImage.src = cardData.link;
-    fullImage.alt = cardData.name;
+    fullImageTitle.textContent = cardData.name;
     openModal(previewImageModal);
   });
   closePreviewModalButton.addEventListener("click", () =>
@@ -132,7 +133,7 @@ function handleAddCardSubmit(e) {
   const name = cardTitleInput.value;
   const link = cardImageInput.value;
   renderCard({ name, link }, cardListEl);
-  closePopup(addCardModal);
+  closePopup(addCardModal).reset();
 }
 /** Event Listeners */
 
