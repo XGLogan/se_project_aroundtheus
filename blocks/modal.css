@@ -5,7 +5,7 @@
   left: 0;
   right: 0;
   z-index: 99;
-  display: flex;
+  display: none;
   /*align-items: center;
   justify-content: center;*/
   background-color: rgba(0, 0, 0, 0.5);
@@ -34,7 +34,7 @@
   width: 430px;
   /*height: 330px; */
 }
-.modal_close-button {
+.modal__close-button {
   top: -45px;
   right: -45px;
   height: 40px;
@@ -48,7 +48,7 @@
   cursor: pointer;
   z-index: 5;
 }
-.modal_close-button:hover {
+.modal__close-button:hover {
   opacity: 0.5;
   cursor: pointer;
 }
@@ -83,11 +83,8 @@
   gap: 43px;
 }
 .modal__button {
-  margin-top: 18px;
   height: 52px;
   background-color: #000;
-}
-.button-text {
   z-index: 99;
   color: #fff;
   text-align: center;
@@ -100,10 +97,9 @@
   margin-top: 0;
   margin-bottom: 0;
   flex-shrink: 0;
-  display: flex;
-  justify-content: center;
 }
-.preview_modal_close_button {
+
+.modal__preview-close-button {
   top: -5px;
   right: -5px;
   height: 40px;
@@ -116,6 +112,9 @@
   background-size: contain;
   cursor: pointer;
   z-index: 5;
+}
+.modal__preview-close-button:hover {
+  opacity: 0.5;
 }
 
 .modal__button:hover {
@@ -174,7 +173,6 @@
     border-color: none;
   }
   .modal__input {
-    width: 238px;
     height: 27px;
     flex-shrink: 0;
     padding: 0;

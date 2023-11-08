@@ -102,6 +102,7 @@ function getCardElement(cardData) {
     fullImageTitle.textContent = cardData.name;
     openModal(previewImageModal);
   });
+
   //add click listener to the cardImageEl
 
   //openModal with previewImageModal
@@ -135,7 +136,7 @@ function handleAddCardSubmit(e) {
   const name = cardTitleInput.value;
   const link = cardImageInput.value;
   renderCard({ name, link }, cardListEl);
-  closePopup(addCardModal).reset();
+  closePopup(addCardModal);
 }
 /** Event Listeners */
 
