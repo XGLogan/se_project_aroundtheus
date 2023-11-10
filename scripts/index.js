@@ -76,7 +76,7 @@ function closePopup(modal) {
 const previewImageModal = document.querySelector("#full-image-modal");
 const closePreviewModalButton = document.querySelector("#close-modal-button");
 closePreviewModalButton.addEventListener("click", () => {
-  closePopup(previewImageModal);
+  closePopup(profileEditModal);
 });
 
 function openModal(modal) {
@@ -128,7 +128,7 @@ function handleProfileEditSubmit(e) {
   e.preventDefault();
   profileName.textContent = profileNameInput.value;
   profileDescription.textContent = profileDescriptionInput.value;
-  closePopup();
+  closePopup(profileEditModal);
 }
 
 function handleAddCardSubmit(e) {
