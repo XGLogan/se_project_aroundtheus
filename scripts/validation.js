@@ -43,7 +43,6 @@ function toggleButtonState(inputEls, submitButton, { inactiveButtonClass }) {
 
 function setEventLisnener(formEl, option) {
   const { inputSelector } = options;
-  const inputEls = { ...formEl.querySelectorAll(inputSelector) };
   const submitButton = formEl.querySelector(".popup__button");
 
   inputEls.forEach((inputEl) => {
