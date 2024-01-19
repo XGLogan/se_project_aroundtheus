@@ -49,31 +49,46 @@
     </div>
     <!--Edit Modal-->
     <div class="modal" id="profile-edit-modal">
+      <div class="modal__overlay" id="profile-edit-overlay"></div>
       <div class="modal__container">
         <button class="modal__close-button" id="profile-modal-close"></button>
         <h4 class="modal__heading">Edit Profile</h4>
         <form class="modal__form" id="profile-edit-form">
-          <input
-            type="text"
-            name="title"
-            class="modal__input"
-            placeholder="Name"
-            id="profile-name-input"
-          />
-          <input
-            type="text"
-            name="description"
-            class="modal__input"
-            placeholder="Description"
-            id="profile-description-input"
-          />
-          <button class="modal__button" type="submit">Save</button>
+          <label class="popup__label">
+            <input
+              type="text"
+              name="title"
+              class="modal__input"
+              placeholder="Name"
+              id="profile-name-input"
+              required
+              minlength="2"
+              maxlength="40"
+            />
+            <span class="popup__error" id="owner-name-error"
+              >Error Message Here</span
+            >
+          </label>
+          <label class="popup__label">
+            <input
+              type="text"
+              name="description"
+              class="modal__input"
+              placeholder="Description"
+              id="profile-description-input"
+            />
+            <span class="popup__error" id="owner-description-error"></span>
+          </label>
+          <button class="modal__button popup__button" type="submit">
+            Save
+          </button>
         </form>
       </div>
     </div>
 
     <!-- Add Card Modal -->
     <div class="modal" id="profile-add-card">
+      <div class="modal__overlay" id="add-card-overlay"></div>
       <div class="modal__container">
         <button class="modal__close-button" id="add-card-modal-close"></button>
         <h4 class="modal__heading">New Place</h4>
@@ -84,6 +99,9 @@
             class="modal__input modal__input_type_title"
             placeholder="Title"
             id="add-card-name-input"
+            required
+            minlength="2"
+            maxlength="40"
           />
           <input
             type="url"
@@ -92,15 +110,18 @@
             placeholder="Image URL"
             id="add-card-image-input"
             required
+            minlength="2"
+            maxlength="200"
           />
-          <button class="modal__button" type="submit">Create</button>
+          <button class="modal__button" type="submit" disabled>Create</button>
         </form>
       </div>
     </div>
 
     <!-- Full Image Modal -->
     <div class="modal" id="full-image-modal">
-      <div class="modal__preview-image">
+      <div class="modal__preview-image" id="modal-preview-image">
+        <div class="modal__overlay" id="preview-image-overlay"></div>
         <button
           class="modal__preview-close-button"
           id="close-modal-button"

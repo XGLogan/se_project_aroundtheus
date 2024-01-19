@@ -76,12 +76,52 @@ function closePopup(modal) {
 const previewImageModal = document.querySelector("#full-image-modal");
 const closePreviewModalButton = document.querySelector("#close-modal-button");
 closePreviewModalButton.addEventListener("click", () => {
-  closePopup(profileEditModal);
+  closePopup(previewImageModal);
 });
 
 function openModal(modal) {
   modal.classList.add("modal_opened");
 }
+
+function closeProfileEditModal() {
+  closePopup(profileEditModal);
+  document.removeEventListener("keydown", handleProfileEditModalKey);
+}
+
+function closePreviewModal() {
+  closePopup(previewImageModal);
+  document.removeEventListener("keydown", handleProfileEditModalKey);
+}
+
+function closeImageModal() {
+  closePopup(addCardModal);
+  document.removeEventListener("keydown", handleProfileEditModalKey);
+}
+
+function handleProfileEditModalKey(event) {
+  if (event.key === "Escape") {
+    closeProfileEditModal();
+    closePreviewModal();
+    closeImageModal();
+  }
+}
+
+const previewImageOverlay = document.querySelector("#preview-image-overlay");
+previewImageOverlay.addEventListener("click", closePreviewModal);
+
+const addCardOverlay = document.querySelector("#add-card-overlay");
+addCardOverlay.addEventListener("click", closeImageModal);
+
+const profileEditOverlay = document.querySelector("#profile-edit-overlay");
+profileEditOverlay.addEventListener("click", closeProfileEditModal);
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    closeProfileEditModal();
+    closePreviewModal();
+    closeImageModal();
+  }
+});
 
 function getCardElement(cardData) {
   const cardElement = cardTemplate.cloneNode(true);
