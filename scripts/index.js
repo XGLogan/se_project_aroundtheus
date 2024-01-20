@@ -72,6 +72,7 @@ const cardImageInput = addCardFormElement.querySelector(
 
 function closePopup(modal) {
   modal.classList.remove("modal_opened");
+  document.removeEventListener("keydown", handleProfileEditModalKey);
 }
 const previewImageModal = document.querySelector("#full-image-modal");
 const closePreviewModalButton = document.querySelector("#close-modal-button");
@@ -85,24 +86,22 @@ function openModal(modal) {
 
 function closeProfileEditModal() {
   closePopup(profileEditModal);
-  document.removeEventListener("keydown", handleProfileEditModalKey);
 }
 
 function closePreviewModal() {
   closePopup(previewImageModal);
-  document.removeEventListener("keydown", handleProfileEditModalKey);
 }
 
 function closeImageModal() {
   closePopup(addCardModal);
-  document.removeEventListener("keydown", handleProfileEditModalKey);
 }
 
 function handleProfileEditModalKey(event) {
   if (event.key === "Escape") {
-    closeProfileEditModal();
-    closePreviewModal();
-    closeImageModal();
+    const openedModal = document.querySelector(".modal_opened");
+    if (openedModal) {
+      closeModal(openedModal);
+    }
   }
 }
 
