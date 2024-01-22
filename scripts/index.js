@@ -70,9 +70,18 @@ const cardImageInput = addCardFormElement.querySelector(
 
 /* Functions */
 
+function closeModalOnRemoteClick(evt) {
+  if (
+    evt.target === evt.currentTarget ||
+    evt.target.classList.contains("modal__close")
+  ) {
+    closeModal(evt.target);
+  }
+}
+
 function closePopup(modal) {
   modal.classList.remove("modal_opened");
-  document.removeEventListener("keydown", handleProfileEditModalKey);
+  document.removeEventListener("keydown", handleModalKeyDown);
 }
 const previewImageModal = document.querySelector("#full-image-modal");
 const closePreviewModalButton = document.querySelector("#close-modal-button");
@@ -82,6 +91,8 @@ closePreviewModalButton.addEventListener("click", () => {
 
 function openModal(modal) {
   modal.classList.add("modal_opened");
+  document.addEventListener("keydown", handleModalKeyDown);
+  //modal.addEventListener("mousedown", closeModalOnRemoteClick);
 }
 
 function closeProfileEditModal() {
@@ -96,7 +107,7 @@ function closeImageModal() {
   closePopup(addCardModal);
 }
 
-function handleProfileEditModalKey(event) {
+function handleModalKeyDown(event) {
   if (event.key === "Escape") {
     const openedModal = document.querySelector(".modal_opened");
     if (openedModal) {
@@ -113,14 +124,6 @@ addCardOverlay.addEventListener("click", closeImageModal);
 
 const profileEditOverlay = document.querySelector("#profile-edit-overlay");
 profileEditOverlay.addEventListener("click", closeProfileEditModal);
-
-document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape") {
-    closeProfileEditModal();
-    closePreviewModal();
-    closeImageModal();
-  }
-});
 
 function getCardElement(cardData) {
   const cardElement = cardTemplate.cloneNode(true);
@@ -178,6 +181,10 @@ function handleAddCardSubmit(e) {
   closePopup(addCardModal);
 }
 /** Event Listeners */
+
+profileEditModal.addEventListener("mousedown", closeModalOnRemoteClick);
+addCardModal.addEventListener("mousedown", closeModalOnRemoteClick);
+previewImageModal.addEventListener("mousedown", closeModalOnRemoteClick);
 
 profileEditButton.addEventListener("click", () => {
   profileNameInput.value = profileName.textContent;
