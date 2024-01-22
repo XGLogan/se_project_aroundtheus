@@ -79,14 +79,14 @@ function closeModalOnRemoteClick(evt) {
   }
 }
 
-function closePopup(modal) {
+function closeModal(modal) {
   modal.classList.remove("modal_opened");
   document.removeEventListener("keydown", handleModalKeyDown);
 }
 const previewImageModal = document.querySelector("#full-image-modal");
 const closePreviewModalButton = document.querySelector("#close-modal-button");
 closePreviewModalButton.addEventListener("click", () => {
-  closePopup(previewImageModal);
+  closeModal(previewImageModal);
 });
 
 function openModal(modal) {
@@ -96,15 +96,15 @@ function openModal(modal) {
 }
 
 function closeProfileEditModal() {
-  closePopup(profileEditModal);
+  closeModal(profileEditModal);
 }
 
 function closePreviewModal() {
-  closePopup(previewImageModal);
+  closeModal(previewImageModal);
 }
 
 function closeImageModal() {
-  closePopup(addCardModal);
+  closeModal(addCardModal);
 }
 
 function handleModalKeyDown(event) {
@@ -170,7 +170,7 @@ function handleProfileEditSubmit(e) {
   e.preventDefault();
   profileName.textContent = profileNameInput.value;
   profileDescription.textContent = profileDescriptionInput.value;
-  closePopup(profileEditModal);
+  closeModal(profileEditModal);
 }
 
 function handleAddCardSubmit(e) {
@@ -178,7 +178,7 @@ function handleAddCardSubmit(e) {
   const name = cardTitleInput.value;
   const link = cardImageInput.value;
   renderCard({ name, link }, cardListEl);
-  closePopup(addCardModal);
+  closeModal(addCardModal);
 }
 /** Event Listeners */
 
@@ -193,7 +193,7 @@ profileEditButton.addEventListener("click", () => {
 });
 
 profileModalCloseButton.addEventListener("click", () =>
-  closePopup(profileEditModal)
+  closeModal(profileEditModal)
 );
 
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
@@ -202,7 +202,7 @@ addCardFormElement.addEventListener("submit", handleAddCardSubmit);
 //add new card
 addNewCardButton.addEventListener("click", () => openModal(addCardModal));
 addCardModalCloseButton.addEventListener("click", () =>
-  closePopup(addCardModal)
+  closeModal(addCardModal)
 );
 
 initialCards.forEach((cardData) => renderCard(cardData, cardListEl));
