@@ -24,7 +24,7 @@ function checkInputValidity(formEl, inputEl, options) {
 }
 
 function hasInvalidInput(inputList) {
-  inputList.some((inputEl) => !inputEl.validity.valid);
+  return inputList.some((inputEl) => !inputEl.validity.valid);
 }
 
 function toggleButtonState(inputEls, submitButton, { inactiveButtonClass }) {
@@ -37,19 +37,19 @@ function toggleButtonState(inputEls, submitButton, { inactiveButtonClass }) {
   }
 }
 
-function setEventListeners(formEl, option) {
+function setEventListeners(formEl, options) {
   const { inputSelector } = options;
   const inputEls = [...formEl.querySelectorAll(inputSelector)];
   const submitButton = formEl.querySelector(options.submitButtonSelector);
   inputEls.forEach((inputEl) => {
-    inputEls.addEventListener("input", (e) => {
-      checkInputValidity(formEl, inputEl, option);
+    inputEl.addEventListener("input", (e) => {
+      checkInputValidity(formEl, inputEl, options);
       toggleButtonState(inputEls, submitButton, options);
     });
   });
 }
 
-function enableValidation(config) {
+function enableValidation(options) {
   const formEl = { ...document.querySelectorAll(options.formSelector) };
   formEl.forEach((formEl) => {
     formEl.addEventListener("submit", (e) => {
