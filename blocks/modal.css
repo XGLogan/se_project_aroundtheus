@@ -165,6 +165,19 @@
   z-index: 4;
 }
 
+.modal__error_visible {
+  display: flex;
+  color: #f00;
+  font-family: Inter;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 15px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+.modal__button_disable {
+  display: none;
+}
 @media screen and (max-width: 400px) {
   .modal {
     padding: 0;

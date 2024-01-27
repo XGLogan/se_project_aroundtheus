@@ -1,5 +1,7 @@
 // enabling validation by calling enableValidation()
 // pass all the settings on call
+const inputErrorClass = "modal__input_type_error";
+const errorClass = "modal__error_visible";
 
 function showInputError(formEl, inputEl, options) {
   const errorMessageEl = formEl.querySelector(`#${inputEl.id}-error`);
@@ -30,10 +32,10 @@ function hasInvalidInput(inputList) {
 function toggleButtonState(inputEls, submitButton, { inactiveButtonClass }) {
   if (hasInvalidInput(inputEls)) {
     submitButton.classList.add(inactiveButtonClass);
-    submitButton.disable = true;
+    submitButton.disabled = true;
   } else {
     submitButton.classList.remove(inactiveButtonClass);
-    submitButton.disable = false;
+    submitButton.disabled = false;
   }
 }
 
@@ -50,18 +52,28 @@ function setEventListeners(formEl, options) {
 }
 
 function enableValidation(options) {
-  const formEl = { ...document.querySelectorAll(options.formSelector) };
-  formEl.forEach((formEl) => {
+  const formElements = [...document.querySelectorAll(options.formSelector)];
+  formElements.forEach((formEl) => {
     formEl.addEventListener("submit", (e) => {
-      e.preventDefault(inputEl);
+      e.preventDefault();
     });
 
     setEventListeners(formEl, options);
     //look for all inputs inside of form
+    const inputEls = formEl.querySelectorAll(options.inputSelector);
+
     //loop through all inputs to see if all are valid
+    inputEls.forEach((inputEl) => {
+      checkInputValidity(formEl, inputEl, options);
+    });
     // if inpput is not valid
     //get validation message
     //add error class to input
+    toggleButtonState(
+      inputEls,
+      formEl.querySelector(options.submitButtonSelector),
+      options
+    );
     //display error message
     //disable button
     // if all inputs are valid
@@ -71,12 +83,10 @@ function enableValidation(options) {
 }
 
 enableValidation({
-  formSelector: ".popup__form",
-  inputSelector: ".popup__input",
-  submitButtonSelector: ".popup__button",
-  inactiveButtonClass: "popup__button_disabled",
-  inputErrorClass: "popup__input_type_error",
-  errorClass: "popup__error_visible",
+  formSelector: ".modal__form",
+  inputSelector: ".modal__input",
+  submitButtonSelector: ".modal__button",
+  inactiveButtonClass: "modal__button_disabled",
+  inputErrorClass: "modal__input_type_error",
+  errorClass: "modal__error_visible",
 });
-
-enableValidation(config);

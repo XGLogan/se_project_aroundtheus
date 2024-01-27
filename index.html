@@ -65,8 +65,8 @@
               minlength="2"
               maxlength="40"
             />
-            <span class="popup__error" id="owner-name-error"
-              >Error Message Here</span
+            <span class="modal__input_type_error" id="profile-name-input-error"
+              >Please fill out this field</span
             >
           </label>
           <label class="popup__label">
@@ -77,11 +77,13 @@
               placeholder="Description"
               id="profile-description-input"
             />
-            <span class="popup__error" id="owner-description-error"></span>
+            <span
+              class="modal__error_visible"
+              id="profile-description-input-error"
+              >Please fill out this field</span
+            >
           </label>
-          <button class="modal__button popup__button" type="submit">
-            Save
-          </button>
+          <button class="modal__button" type="submit">Save</button>
         </form>
       </div>
     </div>
@@ -96,22 +98,28 @@
           <input
             type="text"
             name="title"
-            class="modal__input modal__input_type_title"
+            class="modal__input"
             placeholder="Title"
             id="add-card-name-input"
             required
             minlength="2"
             maxlength="40"
           />
+          <span class="modal__error_visible" id="add-card-name-input-error"
+            >Please fill out this field</span
+          >
           <input
             type="url"
             name="url"
-            class="modal__input modal__input_url"
+            class="modal__input"
             placeholder="Image URL"
             id="add-card-image-input"
             required
             minlength="2"
           />
+          <span class="modal__error_visible" id="add-card-image-input-error"
+            >Please enter a web address</span
+          >
           <button class="modal__button" type="submit">Create</button>
         </form>
       </div>
