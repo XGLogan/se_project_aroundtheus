@@ -1,20 +1,20 @@
 // enabling validation by calling enableValidation()
 // pass all the settings on call
-const inputErrorClass = "modal__input_type_error";
-const errorClass = "modal__error_visible";
 
 function showInputError(formEl, inputEl, options) {
   const errorMessageEl = formEl.querySelector(`#${inputEl.id}-error`);
-  inputEl.classList.add(inputErrorClass);
+  inputEl.classList.add(options.inputErrorClass);
   errorMessageEl.textContent = inputEl.validationMessage;
-  errorMessageEl.classList.add(errorClass);
+  errorMessageEl.classList.add(options.inputErrorClass);
+  errorMessageEl.classList.remove(options.errorDisabled);
 }
 
 function hideInputError(formEl, inputEl, options) {
   const errorMessageEl = formEl.querySelector(`#${inputEl.id}-error`);
-  inputEl.classList.remove(inputErrorClass);
+  inputEl.classList.remove(options.inputErrorClass);
   errorMessageEl.textContent = "";
-  errorMessageEl.classList.remove(errorClass);
+  errorMessageEl.classList.remove(options.inputErrorClass);
+  errorMessageEl.classList.add(options.errorDisabled);
 }
 
 function checkInputValidity(formEl, inputEl, options) {
@@ -59,28 +59,24 @@ function enableValidation(options) {
     });
 
     setEventListeners(formEl, options);
-    //look for all inputs inside of form
-    const inputEls = formEl.querySelectorAll(options.inputSelector);
-
-    //loop through all inputs to see if all are valid
-    inputEls.forEach((inputEl) => {
-      checkInputValidity(formEl, inputEl, options);
-    });
-    // if inpput is not valid
-    //get validation message
-    //add error class to input
+    const submitButton = formEl.querySelector(options.submitButtonSelector);
     toggleButtonState(
-      inputEls,
-      formEl.querySelector(options.submitButtonSelector),
+      [...formEl.querySelectorAll(options.inputSelector)],
+      submitButton,
       options
     );
-    //display error message
-    //disable button
-    // if all inputs are valid
-    //enable button
-    // reset error message
   });
 }
+//look for all inputs inside of form
+//loop through all inputs to see if all are valid
+// if inpput is not valid
+//get validation message
+//add error class to input
+//display error message
+//disable button
+// if all inputs are valid
+//enable button
+// reset error message
 
 enableValidation({
   formSelector: ".modal__form",
@@ -89,4 +85,5 @@ enableValidation({
   inactiveButtonClass: "modal__button_disabled",
   inputErrorClass: "modal__input_type_error",
   errorClass: "modal__error_visible",
+  errorDisabled: "modal__error_disabled",
 });

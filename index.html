@@ -65,7 +65,7 @@
               minlength="2"
               maxlength="40"
             />
-            <span class="modal__input_type_error" id="profile-name-input-error"
+            <span class="modal__error_disabled" id="profile-name-input-error"
               >Please fill out this field</span
             >
           </label>
@@ -76,9 +76,12 @@
               class="modal__input"
               placeholder="Description"
               id="profile-description-input"
+              required
+              minlength="2"
+              maxlength="40"
             />
             <span
-              class="modal__error_visible"
+              class="modal__error_disabled"
               id="profile-description-input-error"
               >Please fill out this field</span
             >
@@ -95,31 +98,35 @@
         <button class="modal__close-button" id="add-card-modal-close"></button>
         <h4 class="modal__heading">New Place</h4>
         <form class="modal__form" id="add-card-form">
-          <input
-            type="text"
-            name="title"
-            class="modal__input"
-            placeholder="Title"
-            id="add-card-name-input"
-            required
-            minlength="2"
-            maxlength="40"
-          />
-          <span class="modal__error_visible" id="add-card-name-input-error"
-            >Please fill out this field</span
-          >
-          <input
-            type="url"
-            name="url"
-            class="modal__input"
-            placeholder="Image URL"
-            id="add-card-image-input"
-            required
-            minlength="2"
-          />
-          <span class="modal__error_visible" id="add-card-image-input-error"
-            >Please enter a web address</span
-          >
+          <label class="popup__label">
+            <input
+              type="text"
+              name="title"
+              class="modal__input"
+              placeholder="Title"
+              id="add-card-name-input"
+              required
+              minlength="2"
+              maxlength="40"
+            />
+            <span class="modal__error_disabled" id="add-card-name-input-error"
+              >Please fill out this field</span
+            >
+          </label>
+          <label class="popup__label">
+            <input
+              type="url"
+              name="url"
+              class="modal__input"
+              placeholder="Image URL"
+              id="add-card-image-input"
+              required
+              minlength="2"
+            />
+            <span class="modal__error_disabled" id="add-card-image-input-error"
+              >Please enter a web address</span
+            >
+          </label>
           <button class="modal__button" type="submit">Create</button>
         </form>
       </div>
