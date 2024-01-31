@@ -3,7 +3,6 @@
 
 function showInputError(formEl, inputEl, options) {
   const errorMessageEl = formEl.querySelector(`#${inputEl.id}-error`);
-  inputEl.classList.add(options.inputErrorClass);
   errorMessageEl.textContent = inputEl.validationMessage;
   errorMessageEl.classList.add(options.inputErrorClass);
   errorMessageEl.classList.remove(options.errorDisabled);
