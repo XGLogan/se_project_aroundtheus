@@ -4,16 +4,16 @@
 function showInputError(formEl, inputEl, options) {
   const errorMessageEl = formEl.querySelector(`#${inputEl.id}-error`);
   errorMessageEl.textContent = inputEl.validationMessage;
-  errorMessageEl.classList.add(options.inputErrorClass);
-  errorMessageEl.classList.remove(options.errorDisabled);
+  inputEl.classList.add(options.inputErrorClass);
+  errorMessageEl.classList.add(options.errorClass);
 }
 
 function hideInputError(formEl, inputEl, options) {
   const errorMessageEl = formEl.querySelector(`#${inputEl.id}-error`);
   inputEl.classList.remove(options.inputErrorClass);
   errorMessageEl.textContent = "";
-  errorMessageEl.classList.remove(options.inputErrorClass);
-  errorMessageEl.classList.add(options.errorDisabled);
+  inputEl.classList.remove(options.inputErrorClass);
+  errorMessageEl.classList.remove(options.errorClass);
 }
 
 function checkInputValidity(formEl, inputEl, options) {
@@ -84,5 +84,4 @@ enableValidation({
   inactiveButtonClass: "modal__button_disabled",
   inputErrorClass: "modal__input_type_error",
   errorClass: "modal__error_visible",
-  errorDisabled: "modal__error_disabled",
 });

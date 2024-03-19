@@ -117,10 +117,11 @@
   opacity: 0.5;
 }
 
-.modal__button:hover {
-  opacity: 0.5;
+.modal__button:hover:not(:disabled) {
+  opacity: 0.8;
   cursor: pointer;
 }
+
 .modal__preview-image {
   margin: auto;
   position: relative;
@@ -165,33 +166,31 @@
   z-index: 4;
 }
 .modal__input_type_error {
-  display: flex;
+  border-bottom: 1px red solid;
+  border-top: white;
+  width: 100%;
+  display: block;
+}
+
+.modal__error {
   color: #f00;
-  font-family: Inter;
   font-size: 12px;
   font-weight: 400;
   line-height: 15px;
   letter-spacing: 0em;
   text-align: left;
   text-emphasis-color: black;
+  display: none;
 }
 
 .modal__error_visible {
-  display: flex;
-  color: black;
-  font-family: Inter;
-  font-size: 12px;
-  font-weight: 400;
-  line-height: 15px;
-  letter-spacing: 0em;
-  text-align: left;
+  display: inline;
 }
-.modal__error_disabled {
-  display: none;
-}
+
 .modal__button_disabled {
-  display: disabled;
-  color: #fff;
+  display: block;
+  background-color: grey;
+  cursor: default;
 }
 @media screen and (max-width: 400px) {
   .modal {

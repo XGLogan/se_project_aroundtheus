@@ -1,7 +1,5 @@
-const cardData1 = {
-  name: "Yosemite Valley",
-  link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
-};
+import Card from "./Card.js";
+A;
 
 const cardData2 = {
   name: "Lake Louise",
@@ -27,6 +25,13 @@ const cardData6 = {
   name: "Lago di Braies",
   link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
 };
+
+const cardData = {
+  name: "Yosemite Valley",
+  link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
+};
+const card = new Card(cardData);
+card.getView();
 
 const initialCards = [
   cardData1,
@@ -167,6 +172,7 @@ function handleAddCardSubmit(e) {
   const link = cardImageInput.value;
   renderCard({ name, link }, cardListEl);
   closeModal(addCardModal);
+  addCardFormElement.reset();
 }
 /** Event Listeners */
 
