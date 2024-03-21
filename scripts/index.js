@@ -1,5 +1,4 @@
 import Card from "./Card.js";
-A;
 
 const cardData2 = {
   name: "Lake Louise",
