@@ -1,4 +1,5 @@
 import Card from "../components/Card.js";
+import FormValidator from "../components/FormValidator.js";
 
 const initialCards = [
   {
@@ -47,6 +48,16 @@ const cardListEl = document.querySelector(".cards__list");
 const cardTitleInput = addCardFormElement.querySelector("#add-card-name-input");
 const cardImageInput = addCardFormElement.querySelector("#add-card-image-input");
 
+// Validation settings
+const validationSettings = {
+  inputSelector: '.modal__input',
+  submitButtonSelector: '.modal__button',
+  inactiveButtonClass: 'modal__button_disabled',
+  inputErrorClass: 'modal__input_type_error',
+  errorClass: 'modal__error_visible'
+};
+
+
 /* Functions */
 
 function closeModal(modal) {
@@ -69,10 +80,7 @@ function handleModalKeyDown(event) {
 }
 
 function closeModalOnRemoteClick(evt) {
-  if (evt.target === evt.currentTarget || evt.target.classList.contains("modal__close")) {
-    const modal = evt.target.closest(".modal");
-    closeModal(modal);
-  }
+
 }
 
 const previewImageModal = document.querySelector("#full-image-modal");
@@ -118,6 +126,7 @@ function handleAddCardSubmit(e) {
   renderCard({ name, link });
   closeModal(addCardModal);
   addCardFormElement.reset();
+  addCardFormValidator.disableButton();
 }
 
 /** Event Listeners */
@@ -136,3 +145,10 @@ addNewCardButton.addEventListener("click", () => openModal(addCardModal));
 addCardModalCloseButton.addEventListener("click", () => closeModal(addCardModal));
 
 initialCards.forEach((cardData) => renderCard(cardData));
+
+// Enable validation for forms
+const profileFormValidator = new FormValidator(validationSettings, profileEditForm);
+profileFormValidator.enableValidation();
+
+const addCardFormValidator = new FormValidator(validationSettings, addCardFormElement);
+addCardFormValidator.enableValidation();
