@@ -61,10 +61,11 @@ const validationSettings = {
 /* Functions */
 
 function closeModal(modal) {
-  modal.classList.remove("modal_opened");
-  document.removeEventListener("keydown", handleModalKeyDown);
+  modal.classList.remove('modal_opened');
+  modal.addEventListener('transitionend', () => {
+    modal.style.visibility = 'hidden';
+  }, { once: true });
 }
-
 function openModal(modal) {
   modal.classList.add("modal_opened");
   document.addEventListener("keydown", handleModalKeyDown);
@@ -82,6 +83,25 @@ function handleModalKeyDown(event) {
 function closeModalOnRemoteClick(evt) {
 
 }
+const modalCloseButtons = document.querySelectorAll('.modal__close-button');
+modalCloseButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    const modal = button.closest('.modal');
+    closeModal(modal);  
+  });
+});
+
+
+const modalOverlays = document.querySelectorAll('.modal__overlay');
+modalOverlays.forEach(overlay => {
+  overlay.addEventListener('click', (event) => {
+    if (event.target === overlay) { 
+      const modal = overlay.closest('.modal');
+      closeModal(modal);  
+    }
+  });
+});
+
 
 const previewImageModal = document.querySelector("#full-image-modal");
 const closePreviewModalButton = document.querySelector("#close-modal-button");
@@ -123,11 +143,12 @@ function handleAddCardSubmit(e) {
   e.preventDefault();
   const name = cardTitleInput.value;
   const link = cardImageInput.value;
-  renderCard({ name, link });
+  renderCard({ name, link }, cardListEl);
   closeModal(addCardModal);
   addCardFormElement.reset();
   addCardFormValidator.disableButton();
 }
+
 
 /** Event Listeners */
 

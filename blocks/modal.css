@@ -10,11 +10,12 @@
   justify-content: center;*/
   background-color: rgba(0, 0, 0, 0.5);
   padding: 0 19px;
-  visibility: none;
+  visibility: hidden;
   opacity: 0;
   pointer-events: none;
   transition: visibility 0s 0.5s, opacity 0.5s linear;
   font-family: "Inter", Arial, sans-serif;
+  
 }
 
 .modal_opened {
@@ -237,5 +238,29 @@
   }
   .modal__heading {
     margin-bottom: 76px;
+  }
+}
+@media (max-width: 320px) {
+  .modal {
+    width: 90%;
+    height: auto;
+    padding: 20px;
+  }
+
+  .modal__container {
+    width: 100%;
+  }
+
+  .modal__form {
+    flex-direction: column;
+  }
+
+  .modal__input {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .modal__button {
+    width: 100%;
   }
 }
