@@ -6,8 +6,6 @@
   right: 0;
   z-index: 99;
   display: none;
-  /*align-items: center;
-  justify-content: center;*/
   background-color: rgba(0, 0, 0, 0.5);
   padding: 0 19px;
   visibility: hidden;
@@ -15,7 +13,6 @@
   pointer-events: none;
   transition: visibility 0s 0.5s, opacity 0.5s linear;
   font-family: "Inter", Arial, sans-serif;
-  
 }
 
 .modal_opened {
