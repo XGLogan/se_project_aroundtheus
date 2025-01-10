@@ -8,7 +8,7 @@
     <meta name="description" content="" />
     <meta name="author" content=" Logan O'Connor" />
     <link href="./favicon.ico" rel="ico" />
-    <link href="./pages/index.css" rel="stylesheet" />
+  
     <link href="./vendor/fonts/fonts.css" rel="stylesheet" />
   </head>
   <body class="page">
@@ -16,7 +16,7 @@
       <header class="header page__section">
         <img
           class="header__image"
-          src="./images/Vector.svg"
+          src="<%=require ('./images/Vector.svg')%>"
           alt="Around the U.S"
         />
       </header>
@@ -24,7 +24,7 @@
         <section class="profile page__section">
           <img
             class="profile__image"
-            src="./images/jacques-cousteau.png"
+            src="<%=require('./images/jacques-cousteau.png')%>"
             alt="avatar"
           />
           <div class="profile__info">
@@ -49,7 +49,7 @@
     </div>
     <!--Edit Modal-->
     <div class="modal" id="profile-edit-modal">
-      <div class="modal__overlay" id="profile-edit-overlay"></div>
+      
       <div class="modal__container">
         <button class="modal__close-button" id="profile-modal-close"></button>
         <h4 class="modal__heading">Edit Profile</h4>
@@ -91,7 +91,7 @@
 
     <!-- Add Card Modal -->
     <div class="modal" id="profile-add-card">
-      <div class="modal__overlay" id="add-card-overlay"></div>
+      
       <div class="modal__container">
         <button class="modal__close-button" id="add-card-modal-close"></button>
         <h4 class="modal__heading">New Place</h4>
