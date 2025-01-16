@@ -9,6 +9,7 @@ import '../pages/index.css';
 
 
 
+
 const profileEditButton = document.querySelector("#profile-edit-button");
 const profileEditModal = document.querySelector("#profile-edit-modal");
 const profileName = document.querySelector("#profile-name");
