@@ -29,4 +29,14 @@ export default class Card {
 
     return this._element;
   }
-}
+
+    _handleLikeIcon() {
+      this._likeButton.classList.toggle("card__like-button_active");
+    }
+    _handleDeleteCard() {
+      this._element.remove;
+    }
+  };
+
+
+
