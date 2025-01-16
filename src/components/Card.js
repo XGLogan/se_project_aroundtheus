@@ -30,16 +30,3 @@ export default class Card {
     return this._element;
   }
 }
-
-_handleLikeIcon() {
-  // toggles the filled-in heart class
-  this._likeButton.classList.toggle('card__like-button_active');
-}
-
-_handleDeleteCard() {
-  // remove the card from the DOM
-  this._element.remove();
-  // if you want to prevent memory leaks, you could also set
-  // this._element = null;
-}
-};
