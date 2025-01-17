@@ -9,8 +9,7 @@ export default class FormValidator {
       this._settings.submitButtonSelector
     );
   }
-
-  // Show Error
+  
   _showInputError(inputElement, errorMessage) {
     const errorElement = this._formElement.querySelector(
       `#${inputElement.id}-error`
@@ -20,7 +19,6 @@ export default class FormValidator {
     errorElement.classList.add(this._settings.errorClass);
   }
 
-  // Hide Error
   _hideInputError(inputElement) {
     const errorElement = this._formElement.querySelector(
       `#${inputElement.id}-error`
