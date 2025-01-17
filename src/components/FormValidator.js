@@ -2,19 +2,29 @@ export default class FormValidator {
   constructor(settings, formElement) {
     this._settings = settings;
     this._formElement = formElement;
-    this._inputList = Array.from(this._formElement.querySelectorAll(this._settings.inputSelector));
-    this._submitButton = this._formElement.querySelector(this._settings.submitButtonSelector);
+    this._inputList = Array.from(
+      this._formElement.querySelectorAll(this._settings.inputSelector)
+    );
+    this._submitButton = this._formElement.querySelector(
+      this._settings.submitButtonSelector
+    );
   }
 
+  // Show Error
   _showInputError(inputElement, errorMessage) {
-    const errorElement = this._formElement.querySelector(`#${inputElement.id}-error`);
+    const errorElement = this._formElement.querySelector(
+      `#${inputElement.id}-error`
+    );
     inputElement.classList.add(this._settings.inputErrorClass);
     errorElement.textContent = errorMessage;
     errorElement.classList.add(this._settings.errorClass);
   }
 
+  // Hide Error
   _hideInputError(inputElement) {
-    const errorElement = this._formElement.querySelector(`#${inputElement.id}-error`);
+    const errorElement = this._formElement.querySelector(
+      `#${inputElement.id}-error`
+    );
     inputElement.classList.remove(this._settings.inputErrorClass);
     errorElement.textContent = '';
     errorElement.classList.remove(this._settings.errorClass);
@@ -44,8 +54,8 @@ export default class FormValidator {
   }
 
   disableButton() {
-    this._submitButton.setAttribute('disabled', true);
     this._submitButton.classList.add(this._settings.inactiveButtonClass);
+    this._submitButton.disabled = true;
   }
 
   _setEventListeners() {
@@ -62,7 +72,6 @@ export default class FormValidator {
     this._formElement.addEventListener('submit', (evt) => {
       evt.preventDefault();
     });
-
     this._setEventListeners();
   }
 
@@ -70,7 +79,6 @@ export default class FormValidator {
     this._inputList.forEach((inputElement) => {
       this._hideInputError(inputElement);
     });
-
     this._toggleButtonState();
   }
 }

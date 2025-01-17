@@ -192,6 +192,24 @@
   background-color: grey;
   cursor: default;
 }
+.modal__form label {
+  position: relative;
+  margin-bottom: 24px; 
+}
+
+.modal__error {
+  position: absolute;
+  bottom: -18px; 
+  left: 0;
+  font-size: 12px;
+  line-height: 1.2;
+  color: red;
+  display: none;
+}
+
+.modal__error_visible {
+  display: block;
+}
 
 @media screen and (max-width: 320px) {
   .modal {
@@ -234,7 +252,6 @@
     left: 250px;
     gap: 0px;
     opacity: 0px;
-    angle: 45 deg;
     size: 18px;
 
   }
