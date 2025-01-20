@@ -6,16 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Around the U.S</title>
     <meta name="description" content="" />
-    <meta name="author" content=" Logan O'Connor" />
-    <link href="./favicon.ico" rel="ico" />
-  
+    <meta name="author" content="Logan O'Connor" />
+    <link href="./favicon.ico" rel="icon" />
   </head>
   <body class="page">
     <div class="page__content">
       <header class="header page__section">
         <img
           class="header__image"
-          src="<%=require ('./images/Vector.svg')%>"
+          src="<%=require('./images/Vector.svg')%>"
           alt="Around the U.S"
         />
       </header>
@@ -46,14 +45,15 @@
         <h3 class="footer__text">@2022 Around the U.S</h3>
       </footer>
     </div>
+
     <!--Edit Modal-->
     <div class="modal" id="profile-edit-modal">
-      
       <div class="modal__container">
         <button class="modal__close-button" id="profile-modal-close"></button>
         <h4 class="modal__heading">Edit Profile</h4>
-        <form class="modal__form" id="profile-edit-form">
-          <label class="popup__label">
+        <form class="modal__form" id="profile-edit-form" name="profile-form">
+          <!-- Changed 'popup__label' to 'modal__label' -->
+          <label class="modal__label">
             <input
               type="text"
               name="title"
@@ -68,7 +68,9 @@
               >Please fill out this field</span
             >
           </label>
-          <label class="popup__label">
+
+          <!-- Changed 'popup__label' to 'modal__label' -->
+          <label class="modal__label">
             <input
               type="text"
               name="description"
@@ -90,12 +92,12 @@
 
     <!-- Add Card Modal -->
     <div class="modal" id="profile-add-card">
-      
       <div class="modal__container">
         <button class="modal__close-button" id="add-card-modal-close"></button>
         <h4 class="modal__heading">New Place</h4>
-        <form class="modal__form" id="add-card-form">
-          <label class="popup__label">
+        <form class="modal__form" id="add-card-form" name="card-form">
+          <!-- Changed 'popup__label' to 'modal__label' -->
+          <label class="modal__label">
             <input
               type="text"
               name="title"
@@ -110,7 +112,9 @@
               >Please fill out this field</span
             >
           </label>
-          <label class="popup__label">
+
+          <!-- Changed 'popup__label' to 'modal__label' -->
+          <label class="modal__label">
             <input
               type="url"
               name="url"
@@ -132,10 +136,7 @@
     <!-- Full Image Modal -->
     <div class="modal" id="full-image-modal">
       <div class="modal__preview-image" id="modal-preview-image">
-        <button
-          class="modal__close-button"
-          id="close-modal-button"
-        ></button>
+        <button class="modal__close-button" id="close-modal-button"></button>
         <img
           class="modal__full-image"
           id="full-image"

@@ -16,8 +16,8 @@ const profileEditButton = document.querySelector('#profile-edit-button');
 const addNewCardButton = document.querySelector('#profile-add-button');
 const profileNameInput = document.querySelector('#profile-name-input');
 const profileDescriptionInput = document.querySelector('#profile-description-input');
-const editProfileForm = document.querySelector('#profile-edit-form');
-const addCardForm = document.querySelector('#add-card-form');
+const editProfileForm = document.forms['profile-form'];
+const addCardForm = document.forms['card-form'];
 
 const popupWithImage = new PopupWithImages('#full-image-modal');
 popupWithImage.setEventListeners();
@@ -92,7 +92,7 @@ profileEditButton.addEventListener('click', () => {
 });
 
 addNewCardButton.addEventListener('click', () => {
-  addCardFormValidator.resetValidation();
+  addCardFormValidator.disableButton();
 
   addCardPopup.open();
 });
