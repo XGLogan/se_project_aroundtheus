@@ -266,5 +266,10 @@
     line-height: 21.78px;
     text-align: left;
   }
+  .modal__button_disabled {
+    display: block;
+    background-color: grey;
+    cursor: default;
+  }
   
 }
