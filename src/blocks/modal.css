@@ -243,11 +243,13 @@
     flex-shrink: 0;
     margin: 0;
     border-color: none;
+    font-size:14px;
   }
   .modal__input {
     height: 27px;
     flex-shrink: 0;
     padding: 0;
+    font-size:14px;
   }
   .modal__close-button {
     width: 26px;
@@ -270,6 +272,7 @@
     display: block;
     background-color: grey;
     cursor: default;
+    font-size:14px;
   }
   
 }
