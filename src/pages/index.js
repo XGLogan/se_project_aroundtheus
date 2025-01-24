@@ -69,7 +69,7 @@ const addCardPopup = new PopupWithForm(
       name: formData.title,
       link: formData.url
     });
-    cardSection.addItem(newCard);
+    addCardFormValidator.disableButton();
   }
 );
 addCardPopup.setEventListeners();
@@ -92,7 +92,5 @@ profileEditButton.addEventListener('click', () => {
 });
 
 addNewCardButton.addEventListener('click', () => {
-  addCardFormValidator.disableButton();
-
   addCardPopup.open();
 });

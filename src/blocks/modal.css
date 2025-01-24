@@ -217,9 +217,9 @@
   }
   .modal__container {
     width: 260px;
-    height: 300px;
+    height: auto;
     flex-shrink: 0;
-    padding-bottom: 0;
+    padding-bottom: 26;
     padding-right: 0;
     padding-top: 25px;
     padding-left: 22px;
@@ -229,13 +229,16 @@
     max-width: 75vh;
     max-height: 75vh;
     width: 238px;
-    height: 27px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap:20px;
     flex-shrink: 0;
   }
 
   .modal__button {
     border-radius: 2px;
-    background: lightgray;
+    background: #000;
     height: 46px;
     flex-shrink: 0;
     margin: 0;
@@ -256,11 +259,12 @@
 
   }
   .modal__heading {
-    margin-bottom: 76px;  
+    margin-bottom: 76px; 
     font-family: Inter;
     font-size: 18px;
     font-weight: 900;
     line-height: 21.78px;
     text-align: left;
   }
+  
 }
