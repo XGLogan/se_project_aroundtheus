@@ -10,6 +10,7 @@ import PopupWithForm from '../components/PopupWithForm.js';
 import PopupWithImages from '../components/PopupWithImages.js';
 import UserInfo from '../components/UserInfo.js';
 import FormValidator from '../components/FormValidator.js';
+import Api from '../components/Api.js';
 
 const profileEditButton = document.querySelector('#profile-edit-button');
 const addNewCardButton = document.querySelector('#profile-add-button');
@@ -92,4 +93,46 @@ profileEditButton.addEventListener('click', () => {
 addNewCardButton.addEventListener('click', () => {
   addCardPopup.open();
 });
-//new
+
+const api = new Api({
+  baseUrl: 'https://around-api.en.tripleten-services.com/v1',
+  headers: {
+    authorization: '54fec02a-8ba4-4841-a6eb-5022ab97d99a',
+    'Content-Type': 'application/json'
+  }
+});
+
+// Test it by calling one of your methods
+api.getInitialCards()
+  .then(cards => {
+    // "cards" is the array from the server
+    console.log(cards);
+  })
+  .catch(err => {
+    console.error(err);
+  });
+
+  Promise.all([
+    api.getUserInfo(),
+    api.getInitialCards()
+  ])
+    .then(([userData, cards]) => {
+      // 1. Set user info in the DOM
+      userInfo.setUserInfo({
+        name: userData.name,
+        description: userData.about
+      });
+      // Maybe also set user avatar from userData.avatar
+  
+      // 2. Render cards from the server
+      cards.forEach(cardData => {
+        const cardElement = createCard({
+          name: cardData.name,
+          link: cardData.link
+        });
+        cardSection.addItem(cardElement);
+      });
+    })
+    .catch((err) => {
+      console.error(err);
+    });
