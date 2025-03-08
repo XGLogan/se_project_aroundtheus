@@ -13,6 +13,15 @@
   margin-right: 24px;
 }
 
+.profile__image:hover{
+  width: 120;
+  height: 120;
+  top: 159px;
+  left: 200px;
+  
+
+}
+
 .profile__info {
   display: grid;
   grid-template-areas: "title button" "description description";
@@ -76,6 +85,21 @@
 }
 .profile__avatar-container:hover .profile__avatar-edit-icon {
   display: block;
+}
+.profile__avatar-container {
+  display: inline-block; 
+}
+
+
+.profile__avatar-container .profile__image {
+  transition: filter 0.3s ease;
+}
+
+.profile__avatar-container:hover .profile__image {
+  filter: grayscale(100%);
+}
+.profile__avatar-container:hover {
+  cursor: pointer;
 }
 
 

@@ -18,6 +18,8 @@ const profileNameInput = document.querySelector('#profile-name-input');
 const profileDescriptionInput = document.querySelector('#profile-description-input');
 const editProfileForm = document.forms['profile-form'];
 const addCardForm = document.forms['card-form'];
+const avatarContainer = document.querySelector('.profile__avatar-container');
+
 
 const popupWithImage = new PopupWithImages('#full-image-modal');
 popupWithImage.setEventListeners();
@@ -75,6 +77,24 @@ const addCardPopup = new PopupWithForm(
 );
 addCardPopup.setEventListeners();
 
+const avatarPopup = new PopupWithForm('#avatar-edit-modal', (formData) => {
+  api.setAvatar(formData.avatar)
+    .then(updatedUser => {
+      userInfo.setUserInfo({
+        name: updatedUser.name,
+        description: updatedUser.about,
+        avatar: updatedUser.avatar
+      });
+      avatarPopup.close();
+    })
+    .catch(err => console.error(err));
+});
+
+avatarPopup.setEventListeners();
+avatarContainer.addEventListener('click', () => {
+   avatarPopup.open();
+  });
+
 const editProfileFormValidator = new FormValidator(validationSettings, editProfileForm);
 editProfileFormValidator.enableValidation();
 
@@ -102,10 +122,8 @@ const api = new Api({
   }
 });
 
-// Test it by calling one of your methods
 api.getInitialCards()
   .then(cards => {
-    // "cards" is the array from the server
     console.log(cards);
   })
   .catch(err => {
@@ -117,14 +135,11 @@ api.getInitialCards()
     api.getInitialCards()
   ])
     .then(([userData, cards]) => {
-      // 1. Set user info in the DOM
       userInfo.setUserInfo({
         name: userData.name,
         description: userData.about
       });
-      // Maybe also set user avatar from userData.avatar
-  
-      // 2. Render cards from the server
+      
       cards.forEach(cardData => {
         const cardElement = createCard({
           name: cardData.name,

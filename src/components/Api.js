@@ -4,7 +4,7 @@ export default class Api {
       this._headers = options.headers;
     }
   
-    // Helper function to check fetch response
+
     _handleResponse(res) {
       if (res.ok) {
         return res.json();
@@ -12,21 +12,21 @@ export default class Api {
       return Promise.reject(`Error: ${res.status}`);
     }
   
-    // Example #1: Get initial cards
+   // Get initial cards
     getInitialCards() {
       return fetch(`${this._baseUrl}/cards`, {
         headers: this._headers
       }).then(this._handleResponse);
     }
   
-    // Example #2: Get user info
+    // Get user info
     getUserInfo() {
       return fetch(`${this._baseUrl}/users/me`, {
         headers: this._headers
       }).then(this._handleResponse);
     }
   
-    // Example #3: Patch profile info
+    // Patch profile info
     setUserInfo(name, about) {
       return fetch(`${this._baseUrl}/users/me`, {
         method: 'PATCH',
@@ -38,7 +38,7 @@ export default class Api {
       }).then(this._handleResponse);
     }
   
-    // Example #4: Add new card
+    // Add new card
     addNewCard(name, link) {
       return fetch(`${this._baseUrl}/cards`, {
         method: 'POST',
@@ -49,6 +49,16 @@ export default class Api {
         })
       }).then(this._handleResponse);
     }
+
+    setAvatar(avatarUrl) {
+      return fetch(`${this._baseUrl}/users/me/avatar`, {
+        method: 'PATCH',
+        headers: this._headers,
+        body: JSON.stringify({ avatar: avatarUrl })
+      })
+        .then((res) => this._handleResponse(res));
+    }
+    
     deleteCard(cardId) {
         return fetch(`${this._baseUrl}/cards/${cardId}`, {
           method: 'DELETE',
