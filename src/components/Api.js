@@ -37,6 +37,7 @@ export default class Api {
         })
       }).then(this._handleResponse);
     }
+    
   
     // Add new card
     addNewCard(name, link) {

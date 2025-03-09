@@ -10,7 +10,10 @@ import PopupWithForm from '../components/PopupWithForm.js';
 import PopupWithImages from '../components/PopupWithImages.js';
 import UserInfo from '../components/UserInfo.js';
 import FormValidator from '../components/FormValidator.js';
+import PopupWithConfirmation from '../components/PopupWithConfirmation.js';
 import Api from '../components/Api.js';
+
+
 
 const profileEditButton = document.querySelector('#profile-edit-button');
 const addNewCardButton = document.querySelector('#profile-add-button');
@@ -31,16 +34,50 @@ const userInfo = new UserInfo({
 });
 
 
-function createCard({ name, link }) {
+function createCard(cardData) {
   const card = new Card(
-    { name, link },
+    cardData,
     '#card-template',
-    (title, imageUrl) => {
-      popupWithImage.open(title, imageUrl);
+    {
+      handleCardClick: (title, imageUrl) => {
+        popupWithImage.open(title, imageUrl);
+      },
+      handleDeleteClick: (cardId, cardElement) => {
+        deleteCardPopup.open(cardId, cardElement);
+      },
+      handleLikeClick: (cardId, isLiked, cardInstance) => {
+        if (isLiked) {
+          api.unlikeCard(cardId)
+            .then(updatedCardData => {
+              cardInstance.updateLikes(updatedCardData.likes);
+            })
+            .catch(err => console.error(err));
+        } else {
+          api.likeCard(cardId)
+            .then(updatedCardData => {
+              cardInstance.updateLikes(updatedCardData.likes);
+            })
+            .catch(err => console.error(err));
+        }
+      }
     }
   );
   return card.getView();
 }
+
+
+const deleteCardPopup = new PopupWithConfirmation('#delete-confirm-modal', {
+  handleFormSubmit: (cardId, cardElement) => {
+    api.deleteCard(cardId)
+      .then(() => {
+        cardElement.remove();
+        deleteCardPopup.close();
+      })
+      .catch(err => console.error(err));
+  }
+});
+deleteCardPopup.setEventListeners();
+
 
 const cardSection = new Section(
   {
@@ -57,27 +94,35 @@ cardSection.renderItems();
 const editProfilePopup = new PopupWithForm(
   '#profile-edit-modal',
   (formData) => {
-    userInfo.setUserInfo({
-      name: formData.title,
-      description: formData.description
-    });
+    api.setUserInfo(formData.title, formData.description)
+      .then(updatedUserData => {
+        userInfo.setUserInfo({
+          name: updatedUserData.name,
+          description: updatedUserData.about,
+          avatar: updatedUserData.avatar 
+        });
+        editProfilePopup.close();
+      })
+      .catch(err => console.error(err));
   }
 );
 editProfilePopup.setEventListeners();
 
-const addCardPopup = new PopupWithForm(
-  '#profile-add-card',
-  (formData) => {
-    const newCard = createCard({
-      name: formData.title,
-      link: formData.url
+const addCardPopup = new PopupWithForm('#profile-add-card', (formData) => {
+  api.addNewCard(formData.title, formData.url)
+    .then((newCardData) => {
+      const newCardElement = createCard(newCardData);
+      cardSection.addItem(newCardElement);
+      
+      addCardPopup.close();
+      addCardFormValidator.disableButton();
+    })
+    .catch((err) => {
+      console.error('Error adding card:', err);
     });
-    cardSection.addItem(newCard);
-
-    addCardFormValidator.disableButton();
-  }
-);
+});
 addCardPopup.setEventListeners();
+
 
 const avatarPopup = new PopupWithForm('#avatar-edit-modal', (formData) => {
   api.setAvatar(formData.avatar)
@@ -133,24 +178,17 @@ api.getInitialCards()
     console.error(err);
   });
 
-  Promise.all([
-    api.getUserInfo(),
-    api.getInitialCards()
-  ])
-    .then(([userData, cards]) => {
-      userInfo.setUserInfo({
-        name: userData.name,
-        description: userData.about
-      });
-      
-      cards.forEach(cardData => {
-        const cardElement = createCard({
-          name: cardData.name,
-          link: cardData.link
-        });
-        cardSection.addItem(cardElement);
-      });
-    })
-    .catch((err) => {
-      console.error(err);
+  Promise.all([api.getUserInfo(), api.getInitialCards()])
+  .then(([userData, cards]) => {
+    userInfo.setUserInfo({
+      name: userData.name,
+      description: userData.about,
+      avatar: userData.avatar
     });
+
+    cards.forEach(cardData => {
+      const cardElement = createCard(cardData);
+      cardSection.addItem(cardElement);
+    });
+  })
+  .catch(err => console.error(err));
