@@ -26,8 +26,10 @@ popupWithImage.setEventListeners();
 
 const userInfo = new UserInfo({
   nameSelector: '#profile-name',
-  descriptionSelector: '#profile-description'
+  descriptionSelector: '#profile-description',
+  avatarSelector: '.profile__image'
 });
+
 
 function createCard({ name, link }) {
   const card = new Card(
@@ -114,6 +116,7 @@ addNewCardButton.addEventListener('click', () => {
   addCardPopup.open();
 });
 
+//API
 const api = new Api({
   baseUrl: 'https://around-api.en.tripleten-services.com/v1',
   headers: {
