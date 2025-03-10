@@ -2,9 +2,9 @@ export default class Card {
   constructor(cardData, templateSelector, { handleCardClick, handleLikeClick, handleDeleteClick }) {
     this._name = cardData.name;
     this._link = cardData.link;
-    this._id = cardData._id;
+    this._id = cardData._id || `initialCard_${this._name}`; 
     this._likes = cardData.likes || [];
-    
+
     this._templateSelector = templateSelector;
     this._handleCardClick = handleCardClick;
     this._handleLikeClick = handleLikeClick;
@@ -32,9 +32,9 @@ export default class Card {
     });
 
     this._likeButton.addEventListener('click', () => {
-      this._likeButton.classList.toggle('card__like-button_active');
-      const isLiked = this._likeButton.classList.contains('card__like-button_active');
+      const isLiked = this._likeButton.classList.toggle('card__like-button_active');
       this._handleLikeClick(this._id, isLiked, this);
+      localStorage.setItem(this._id, JSON.stringify({ liked: isLiked }));
     });
 
     this._deleteButton.addEventListener('click', () => {
@@ -58,6 +58,11 @@ export default class Card {
     this._cardTitle.textContent = this._name;
     this._cardImage.src = this._link;
     this._cardImage.alt = this._name;
+
+    const storedData = JSON.parse(localStorage.getItem(this._id));
+    if (storedData && storedData.liked) {
+      this._likeButton.classList.add('card__like-button_active');
+    }
 
     this._renderLikes();
     this._setEventListeners();

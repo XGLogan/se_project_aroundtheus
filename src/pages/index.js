@@ -68,14 +68,20 @@ function createCard(cardData) {
 
 const deleteCardPopup = new PopupWithConfirmation('#delete-confirm-modal', {
   handleFormSubmit: (cardId, cardElement) => {
+    if (!cardId) {
+      cardElement.remove();
+      deleteCardPopup.close();
+      return;
+    }
     api.deleteCard(cardId)
-      .then(() => {
-        cardElement.remove();
-        deleteCardPopup.close();
-      })
-      .catch(err => console.error(err));
-  }
+    .then(() => {
+      cardElement.remove();
+      deleteCardPopup.close();
+    })
+    .catch(err => console.error(err));
+}
 });
+
 deleteCardPopup.setEventListeners();
 
 
@@ -170,22 +176,17 @@ const api = new Api({
   }
 });
 
-api.getInitialCards()
-  .then(cards => {
-    console.log(cards);
-  })
-  .catch(err => {
-    console.error(err);
-  });
+let currentUserId;
 
-  Promise.all([api.getUserInfo(), api.getInitialCards()])
+Promise.all([api.getUserInfo(), api.getInitialCards()])
   .then(([userData, cards]) => {
+    currentUserId = userData._id; 
     userInfo.setUserInfo({
       name: userData.name,
       description: userData.about,
       avatar: userData.avatar
     });
-
+    
     cards.forEach(cardData => {
       const cardElement = createCard(cardData);
       cardSection.addItem(cardElement);

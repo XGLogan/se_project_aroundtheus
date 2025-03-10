@@ -61,12 +61,12 @@ export default class Api {
     }
     
     deleteCard(cardId) {
-        return fetch(`${this._baseUrl}/cards/${cardId}`, {
-          method: 'DELETE',
-          headers: this._headers
-        })
-        .then(res => this._handleResponse(res));
-      }
+      return fetch(`${this._baseUrl}/cards/${cardId}`, {
+        method: 'DELETE',
+        headers: this._headers
+      }).then(res => this._handleResponse(res));
+    }
+    
       likeCard(cardId) {
         return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
           method: 'PUT',
