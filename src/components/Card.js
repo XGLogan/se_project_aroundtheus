@@ -2,7 +2,7 @@ export default class Card {
   constructor(cardData, templateSelector, { handleCardClick, handleLikeClick, handleDeleteClick }) {
     this._name = cardData.name;
     this._link = cardData.link;
-    this._id = cardData._id || `initialCard_${this._name}`; 
+    this._id = cardData._id;    // this is one of the prroblems
     this._likes = cardData.likes || [];
 
     this._templateSelector = templateSelector;
@@ -32,15 +32,18 @@ export default class Card {
     });
 
     this._likeButton.addEventListener('click', () => {
-      const isLiked = this._likeButton.classList.toggle('card__like-button_active');
-      this._handleLikeClick(this._id, isLiked, this);
-      localStorage.setItem(this._id, JSON.stringify({ liked: isLiked }));
+      const isLiked = this._likeButton.classList.contains('card__like-button_active');
+      this._likeButton.classList.toggle('card__like-button_active'); // Toggle visual like state
+      localStorage.setItem(this._id, JSON.stringify(this._likeButton.classList.contains('card__like-button_active')));
+      this._handleLikeClick(this._id, !isLiked, this);
     });
+    
 
     this._deleteButton.addEventListener('click', () => {
       this._handleDeleteClick(this._id, this._element);
     });
   }
+
 
   updateLikes(newLikes) {
     this._likes = newLikes;
@@ -60,7 +63,7 @@ export default class Card {
     this._cardImage.alt = this._name;
 
     const storedData = JSON.parse(localStorage.getItem(this._id));
-    if (storedData && storedData.liked) {
+    if (storedData && storedData === true) {
       this._likeButton.classList.add('card__like-button_active');
     }
 

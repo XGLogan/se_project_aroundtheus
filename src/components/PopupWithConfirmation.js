@@ -19,6 +19,5 @@ export default class PopupWithConfirmation extends Popup {
       evt.preventDefault();
       this._handleFormSubmit(this._cardId, this._cardInstance);
     });
-    
   }
 }
