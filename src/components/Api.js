@@ -8,10 +8,9 @@ export default class Api {
     if (res.ok) {
       return res.json();
     }
-    return Promise.reject(`Error: ${res.status}`);
   }
 
- // Get initial cards
+  // Get initial cards
   getInitialCards() {
     return fetch(`${this._baseUrl}/cards`, {
       headers: this._headers
@@ -57,7 +56,7 @@ export default class Api {
     })
       .then((res) => this._handleResponse(res));
   }
-  
+
   deleteCard(cardId) {
     return fetch(`${this._baseUrl}/cards/${cardId}`, {
       method: 'DELETE',
@@ -66,12 +65,12 @@ export default class Api {
   }
 
   likeCard(cardId) {
-        return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
-          method: 'PUT',
-          headers: this._headers
-        })
-        .then(res => this._handleResponse(res));
-      }
+    return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
+      method: 'PUT',
+      headers: this._headers
+    })
+    .then(res => this._handleResponse(res));
+  }
   
       unlikeCard(cardId) {
         return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {

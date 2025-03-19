@@ -1,195 +1,196 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Around the U.S</title>
-  <meta name="description" content="" />
-  <meta name="author" content="Logan O'Connor" />
-  <link href="./favicon.ico" rel="icon" />
-</head>
-<body class="page">
-  <div class="page__content">
-    <header class="header page__section">
-      <img
-        class="header__image"
-        src="<%=require('./images/Vector.svg')%>"
-        alt="Around the U.S"
-      />
-    </header>
-    <main class="content">
-      <section class="profile page__section">
-        <div class="profile__avatar-container">
-          <img
-            class="profile__image"
-            src="<%=require('./images/jacques-cousteau.png')%>"
-            alt="avatar"
-          />
-        </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Around the U.S</title>
+    <meta name="description" content="" />
+    <meta name="author" content="Logan O'Connor" />
+    <link href="./favicon.ico" rel="icon" />
+  </head>
+  <body class="page">
+    <div class="page__content">
+      <header class="header page__section">
+        <img
+          class="header__image"
+          src="<%=require('./images/Vector.svg')%>"
+          alt="Around the U.S"
+        />
+      </header>
+      <main class="content">
+        <section class="profile page__section">
+          <div class="profile__avatar-container">
+            <img
+              class="profile__image"
+              src="<%=require('./images/jacques-cousteau.png')%>"
+              alt="avatar"
+            />
+          </div>
 
-        <!--Profile Info-->
-        <div class="profile__info">
-          <h1 class="profile__title" id="profile-name">Jacques Cousteau</h1>
-          <button
-            class="profile__edit-button"
-            id="profile-edit-button"
-          ></button>
-          <p class="profile__discription" id="profile-description">
-            Explorer
-          </p>
-        </div>
-        <button class="profile__add-button" id="profile-add-button"></button>
+          <!--Profile Info-->
+          <div class="profile__info">
+            <h1 class="profile__title" id="profile-name">Jacques Cousteau</h1>
+            <button
+              class="profile__edit-button"
+              id="profile-edit-button"
+            ></button>
+            <p class="profile__discription" id="profile-description">
+              Explorer
+            </p>
+          </div>
+          <button class="profile__add-button" id="profile-add-button"></button>
+        </section>
+      </main>
+      <section class="cards page__section">
+        <ul class="cards__list"></ul>
       </section>
-    </main>
-    <section class="cards page__section">
-      <ul class="cards__list"></ul>
-    </section>
-    <footer class="footer">
-      <h3 class="footer__text">@2022 Around the U.S</h3>
-    </footer>
-  </div>
-
-  <!--Edit Modal-->
-  <div class="modal" id="profile-edit-modal">
-    <div class="modal__container">
-      <button class="modal__close-button" id="profile-modal-close"></button>
-      <h4 class="modal__heading">Edit Profile</h4>
-      <form class="modal__form" id="profile-edit-form" name="profile-form">
-        <label class="modal__label">
-          <input
-            type="text"
-            name="title"
-            class="modal__input"
-            placeholder="Name"
-            id="profile-name-input"
-            required
-            minlength="2"
-            maxlength="40"
-          />
-          <span class="modal__error" id="profile-name-input-error"
-            >Please fill out this field</span
-          >
-        </label>
-
-        <label class="modal__label">
-          <input
-            type="text"
-            name="description"
-            class="modal__input"
-            placeholder="Description"
-            id="profile-description-input"
-            required
-            minlength="2"
-            maxlength="40"
-          />
-          <span class="modal__error" id="profile-description-input-error"
-            >Please fill out this field</span
-          >
-        </label>
-        <button class="modal__button" type="submit">Save</button>
-      </form>
+      <footer class="footer">
+        <h3 class="footer__text">@2022 Around the U.S</h3>
+      </footer>
     </div>
-  </div>
 
-  <!-- Add Card Modal -->
-  <div class="modal" id="profile-add-card">
-    <div class="modal__container">
-      <button class="modal__close-button" id="add-card-modal-close"></button>
-      <h4 class="modal__heading">New Place</h4>
-      <form class="modal__form" id="add-card-form" name="card-form">
-        <label class="modal__label">
-          <input
-            type="text"
-            name="title"
-            class="modal__input"
-            placeholder="Title"
-            id="add-card-name-input"
-            required
-            minlength="2"
-            maxlength="40"
-          />
-          <span class="modal__error" id="add-card-name-input-error"
-            >Please fill out this field</span
-          >
-        </label>
+    <!--Edit Modal-->
+    <div class="modal" id="profile-edit-modal">
+      <div class="modal__container">
+        <button class="modal__close-button" id="profile-modal-close"></button>
+        <h4 class="modal__heading">Edit Profile</h4>
+        <form class="modal__form" id="profile-edit-form" name="profile-form">
+          <label class="modal__label">
+            <input
+              type="text"
+              name="title"
+              class="modal__input"
+              placeholder="Name"
+              id="profile-name-input"
+              required
+              minlength="2"
+              maxlength="40"
+            />
+            <span class="modal__error" id="profile-name-input-error"
+              >Please fill out this field</span
+            >
+          </label>
 
-        <label class="modal__label">
+          <label class="modal__label">
+            <input
+              type="text"
+              name="description"
+              class="modal__input"
+              placeholder="Description"
+              id="profile-description-input"
+              required
+              minlength="2"
+              maxlength="40"
+            />
+            <span class="modal__error" id="profile-description-input-error"
+              >Please fill out this field</span
+            >
+          </label>
+          <button class="modal__button" type="submit">Save</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Add Card Modal -->
+    <div class="modal" id="profile-add-card">
+      <div class="modal__container">
+        <button class="modal__close-button" id="add-card-modal-close"></button>
+        <h4 class="modal__heading">New Place</h4>
+        <form class="modal__form" id="add-card-form" name="card-form">
+          <label class="modal__label">
+            <input
+              type="text"
+              name="title"
+              class="modal__input"
+              placeholder="Title"
+              id="add-card-name-input"
+              required
+              minlength="2"
+              maxlength="40"
+            />
+            <span class="modal__error" id="add-card-name-input-error"
+              >Please fill out this field</span
+            >
+          </label>
+
+          <label class="modal__label">
+            <input
+              type="url"
+              name="url"
+              class="modal__input"
+              placeholder="Image URL"
+              id="add-card-image-input"
+              required
+              minlength="2"
+            />
+            <span class="modal__error" id="add-card-image-input-error"
+              >Please enter a web address</span
+            >
+          </label>
+          <button class="modal__button" type="submit">Create</button>
+        </form>
+      </div>
+    </div>
+
+<!-- Delete Card Modal -->
+
+    <div class="modal" id="delete-confirm-modal">
+      <div class="modal__container">
+        <button class="modal__close-button"></button>
+        <h4 class="modal__heading">Are you sure?</h4>
+        <form class="modal__form" name="delete-form">
+          <button class="modal__button" type="submit">Yes</button>
+        </form>
+      </div>
+    </div>
+    
+
+    <!-- Full Image Modal -->
+    <div class="modal" id="full-image-modal">
+      <div class="modal__preview-image" id="modal-preview-image">
+        <button class="modal__close-button" id="close-modal-button"></button>
+        <img
+          class="modal__full-image"
+          id="full-image"
+          alt="Full Image"
+          src="#"
+        />
+        <h3 class="full-image-title" id="full-image-title"></h3>
+      </div>
+    </div>
+
+    <div class="modal" id="avatar-edit-modal">
+      <div class="modal__container">
+        <button class="modal__close-button"></button>
+        <h4 class="modal__heading">Change Profile Picture</h4>
+        <form class="modal__form" name="avatar-form">
           <input
             type="url"
-            name="url"
+            name="avatar"
             class="modal__input"
-            placeholder="Image URL"
-            id="add-card-image-input"
+            placeholder="Image link"
             required
-            minlength="2"
           />
-          <span class="modal__error" id="add-card-image-input-error"
-            >Please enter a web address</span
-          >
-        </label>
-        <button class="modal__button" type="submit">Create</button>
-      </form>
-    </div>
-  </div>
-
-  <!-- Delete Card Modal -->
-  <div class="modal" id="delete-confirm-modal">
-    <div class="modal__container">
-      <button class="modal__close-button"></button>
-      <h4 class="modal__heading">Are you sure?</h4>
-      <form class="modal__form" name="delete-form">
-        <button class="modal__button" type="submit">Yes</button>
-      </form
-    </div>
-  </div>
-  
-
-  <!-- Full Image Modal -->
-  <div class="modal" id="full-image-modal">
-    <div class="modal__preview-image" id="modal-preview-image">
-      <button class="modal__close-button" id="close-modal-button"></button>
-      <img
-        class="modal__full-image"
-        id="full-image"
-        alt="Full Image"
-        src="#"
-      />
-      <h3 class="full-image-title" id="full-image-title"></h3>
-    </div>
-  </div>
-
-  <div class="modal" id="avatar-edit-modal">
-    <div class="modal__container">
-      <button class="modal__close-button"></button>
-      <h4 class="modal__heading">Change Profile Picture</h4>
-      <form class="modal__form" name="avatar-form">
-        <input
-          type="url"
-          name="avatar"
-          class="modal__input"
-          placeholder="Image link"
-          required
-        />
-        <button class="modal__button" type="submit">Save</button>
-      </form>
-    </div>
-  </div>
-  
-
-  <template id="card-template">
-    <li class="card">
-      <img
-        class="card__image"
-        src="./images/lago-di-braies.png"
-        alt="Lago Di Braies"
-      />
-      <button class="card__trash-button"></button>
-      <div class="card__description">
-        <h2 class="card__title">Lago Di Braies</h2>
-        <button class="card__like-button" id="card-like-button"></button>
+          <button class="modal__button" type="submit">Save</button>
+        </form>
       </div>
-    </li>
-  </template>
-</body>
+    </div>
+    
+
+    <template id="card-template">
+      <li class="card">
+        <img
+          class="card__image"
+          src="./images/lago-di-braies.png"
+          alt="Lago Di Braies"
+        />
+        <button class="card__trash-button"></button>
+        <div class="card__description">
+          <h2 class="card__title">Lago Di Braies</h2>
+          <button class="card__like-button" id="card-like-button"></button>
+        </div>
+      </li>
+    </template>
+  </body>
 </html>
