@@ -31,7 +31,7 @@ export default class PopupWithForm extends Popup {
     this._form.addEventListener('submit', (evt) => {
       evt.preventDefault();
       const formData = this._getInputValues();
-      this.renderLoading(true); // Show loading state
+      this.renderLoading(true); 
       this._handleFormSubmit(formData)
         .then(() => {
           this.close();
@@ -40,14 +40,14 @@ export default class PopupWithForm extends Popup {
           console.error(err);
         })
         .finally(() => {
-          this.renderLoading(false); // Hide loading state
+          this.renderLoading(false); 
         });
     });
   }
 
   close() {
     super.close();
-    this._form.reset(); // Only reset after successful form submission
+    this._form.reset(); 
   }
 
   setInputValues(data) {

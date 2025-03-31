@@ -87,7 +87,7 @@ deleteCardPopup.setEventListeners();
 
 const cardSection = new Section(
   {
-    items: initialCards,
+    items: [], 
     renderer: (cardItem) => {
       const cardElement = createCard(cardItem);
       cardSection.addItem(cardElement);
@@ -95,6 +95,8 @@ const cardSection = new Section(
   },
   '.cards__list'
 );
+
+
 cardSection.renderItems();
 
 const editProfilePopup = new PopupWithForm(
