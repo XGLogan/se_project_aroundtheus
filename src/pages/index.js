@@ -99,50 +99,37 @@ const cardSection = new Section(
 
 cardSection.renderItems();
 
-const editProfilePopup = new PopupWithForm(
-  '#profile-edit-modal',
-  (formData) => {
-    api.setUserInfo(formData.title, formData.description)
-      .then(updatedUserData => {
-        userInfo.setUserInfo({
-          name: updatedUserData.name,
-          description: updatedUserData.about,
-          avatar: updatedUserData.avatar 
-        });
-        editProfilePopup.close();
-      })
-      .catch(err => console.error(err));
-  }
-);
+const editProfilePopup = new PopupWithForm('#profile-edit-modal', (formData) => {
+  return api.setUserInfo(formData.title, formData.description)
+    .then((updatedUserData) => {
+      userInfo.setUserInfo({
+        name: updatedUserData.name,
+        description: updatedUserData.about,
+        avatar: updatedUserData.avatar 
+      });
+    });
+});
 editProfilePopup.setEventListeners();
 
 const addCardPopup = new PopupWithForm('#profile-add-card', (formData) => {
-  api.addNewCard(formData.title, formData.url)
+  return api.addNewCard(formData.title, formData.url)
     .then((newCardData) => {
       const newCardElement = createCard(newCardData);
       cardSection.addItem(newCardElement);
-      
-      addCardPopup.close();
-      addCardFormValidator.disableButton();
-    })
-    .catch((err) => {
-      console.error('Error adding card:', err);
     });
 });
 addCardPopup.setEventListeners();
 
 
 const avatarPopup = new PopupWithForm('#avatar-edit-modal', (formData) => {
-  api.setAvatar(formData.avatar)
-    .then(updatedUser => {
+  return api.setAvatar(formData.avatar)
+    .then((updatedUser) => {
       userInfo.setUserInfo({
         name: updatedUser.name,
         description: updatedUser.about,
         avatar: updatedUser.avatar
       });
-      avatarPopup.close();
-    })
-    .catch(err => console.error(err));
+    });
 });
 
 avatarPopup.setEventListeners();
