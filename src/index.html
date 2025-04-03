@@ -21,11 +21,13 @@
       <main class="content">
         <section class="profile page__section">
           <div class="profile__avatar-container">
-            <img class="profile__image" src="./images/pen.png" alt="User avatar">
+            <img class="profile__image" src="./images/pen.svg" alt="User avatar">
             <div class="profile__avatar-edit-icon">
-              <img src="./images/pen.png" alt="Edit avatar">
+              <img src="./images/pen.svg" alt="Edit avatar">
             </div>
           </div>
+          
+          
 
           <!--Profile Info-->
           <div class="profile__info">
@@ -169,8 +171,12 @@
             name="avatar"
             class="modal__input"
             placeholder="Image link"
+            id="avatar-url-input"
             required
           />
+          <span class="modal__error" id="avatar-url-input-error">
+            Please enter a valid URL
+          </span>
           <button class="modal__button" type="submit">Save</button>
         </form>
       </div>

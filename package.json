@@ -24,11 +24,19 @@
     "html-webpack-plugin": "5.5.0",
     "mini-css-extract-plugin": "2.6.1",
     "postcss-loader": "7.0.1",
-    "webpack": "^5.97.1",
-    "webpack-cli": "4.10.0",
+    "webpack": "^5.98.0",
+    "webpack-cli": "^4.10.0",
     "webpack-dev-server": "4.9.3"
   },
   "dependencies": {
     "core-js": "3.23.5"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/XGLogan/se_project_aroundtheus.git"
+  },
+  "bugs": {
+    "url": "https://github.com/XGLogan/se_project_aroundtheus/issues"
+  },
+  "homepage": "https://github.com/XGLogan/se_project_aroundtheus#readme"
 }

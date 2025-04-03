@@ -143,6 +143,10 @@ editProfileFormValidator.enableValidation();
 const addCardFormValidator = new FormValidator(validationSettings, addCardForm);
 addCardFormValidator.enableValidation();
 
+const avatarForm = document.forms['avatar-form'];
+const avatarFormValidator = new FormValidator(validationSettings, avatarForm);
+avatarFormValidator.enableValidation();
+
 
 profileEditButton.addEventListener('click', () => {
   const { name, description } = userInfo.getUserInfo();
