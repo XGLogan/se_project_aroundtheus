@@ -133,9 +133,12 @@ const avatarPopup = new PopupWithForm('#avatar-edit-modal', (formData) => {
 });
 
 avatarPopup.setEventListeners();
-avatarContainer.addEventListener('click', () => {
-   avatarPopup.open();
-  });
+
+
+avatarContainer.addEventListener("click", () => {
+  avatarFormValidator.resetValidation();
+  avatarPopup.open();
+});
 
 const editProfileFormValidator = new FormValidator(validationSettings, editProfileForm);
 editProfileFormValidator.enableValidation();
@@ -158,7 +161,9 @@ profileEditButton.addEventListener('click', () => {
 
 addNewCardButton.addEventListener('click', () => {
   addCardPopup.open();
+  addCardFormValidator.resetValidation();
 });
+
 
 //API
 const api = new Api({

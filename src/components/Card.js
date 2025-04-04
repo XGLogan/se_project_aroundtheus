@@ -5,6 +5,7 @@ export default class Card {
     this._id = cardData._id;   
     this._likes = cardData.likes || [];
 
+    this._isLiked = cardData.isLiked; 
     this._templateSelector = templateSelector;
     this._handleCardClick = handleCardClick;
     this._handleLikeClick = handleLikeClick;
@@ -33,8 +34,6 @@ export default class Card {
 
     this._likeButton.addEventListener('click', () => {
       const isLiked = this._likeButton.classList.contains('card__like-button_active');
-      this._likeButton.classList.toggle('card__like-button_active'); 
-      localStorage.setItem(this._id, JSON.stringify(this._likeButton.classList.contains('card__like-button_active')));
       this._handleLikeClick(this._id, !isLiked, this);
     });
     
@@ -48,6 +47,7 @@ export default class Card {
   updateLikes(newLikes) {
     this._likes = newLikes;
     this._renderLikes();
+    this._likeButton.classList.toggle('card__like-button_active'); 
   }
 
   getView() {
@@ -62,8 +62,7 @@ export default class Card {
     this._cardImage.src = this._link;
     this._cardImage.alt = this._name;
 
-    const storedData = JSON.parse(localStorage.getItem(this._id));
-    if (storedData && storedData === true) {
+    if (this._isLiked) {
       this._likeButton.classList.add('card__like-button_active');
     }
 
