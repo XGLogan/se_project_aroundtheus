@@ -160,12 +160,13 @@
         <h3 class="full-image-title" id="full-image-title"></h3>
       </div>
     </div>
-
+    
     <div class="modal" id="avatar-edit-modal">
       <div class="modal__container">
         <button class="modal__close-button"></button>
         <h4 class="modal__heading">Change Profile Picture</h4>
         <form class="modal__form" name="avatar-form">
+          <label class="modal__label"> 
           <input
             type="url"
             name="avatar"
@@ -177,6 +178,7 @@
           <span class="modal__error" id="avatar-url-input-error">
             Please enter a valid URL
           </span>
+        </label>
           <button class="modal__button" type="submit">Save</button>
         </form>
       </div>
