@@ -13,6 +13,15 @@
   margin-right: 24px;
 }
 
+.profile__image:hover{
+  width: 26;
+  height: 26;
+  top: 206px;
+  left: 247px;
+  
+
+}
+
 .profile__info {
   display: grid;
   grid-template-areas: "title button" "description description";
@@ -63,6 +72,48 @@
   opacity: 0.5;
   cursor: pointer;
 }
+
+.profile__avatar-container {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  /* force container to match the avatar size */
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 24px; /* If you want spacing to the next element */
+}
+
+
+.profile__image {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  transition: filter 0.3s ease;
+}
+
+
+.profile__avatar-container:hover .profile__image {
+  filter: brightness(30%); 
+}
+
+
+.profile__avatar-edit-icon {
+  position: absolute;
+  top: 50%;             
+  left: 50%;             
+  transform: translate(-50%, -50%); 
+  display: none;        
+}
+
+
+.profile__avatar-container:hover .profile__avatar-edit-icon {
+  display: block;
+}
+
+
 
 @media screen and (max-width: 400px) {
   .profile {
